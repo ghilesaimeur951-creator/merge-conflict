@@ -1,4 +1,4 @@
-# merge-conflict
+LOCAL
 Projet de test Git
 Deuxième ligne
 Troisème ligne
