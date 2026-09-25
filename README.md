@@ -1,53 +1,63 @@
 # Pocket Scanner — Android
 
-Application Android de scan de documents créée dans ce dépôt.
+Pocket Scanner est une application Android de scan de documents pensée pour fonctionner localement et hors ligne.
 
-## Fonctions
+## Version 2
 
-- prise de photo avec l'appareil photo du téléphone ;
-- import d'une image depuis la galerie / les fichiers ;
-- rognage manuel directement dans l'application ;
-- ajout de plusieurs pages dans une même session ;
-- génération d'un PDF multipage ;
-- partage du PDF avec les applications Android compatibles (notes, Drive, messagerie, e-mail, etc.) ;
-- fonctionnement hors ligne pour tout le flux de scan ;
-- détection de l'état de la connexion Internet, sans rendre Internet obligatoire.
+Cette version ajoute :
 
-## Vie privée et mode hors ligne
+- détection automatique approximative des bords d'une feuille après photo ou import ;
+- proposition de rognage avec trois choix : accepter, rogner manuellement ou garder l'original ;
+- indication du ratio détecté et reconnaissance approximative A4 / Lettre ;
+- import de plusieurs images en une seule fois puis création d'un PDF multipage ;
+- application en lot des rognages automatiques détectés ;
+- bibliothèque PDF intégrée directement dans l'application ;
+- historique trié des PDF créés, avec date et taille ;
+- ouverture, partage et suppression des PDF depuis l'historique ;
+- sélection et partage de plusieurs PDF en une seule action ;
+- interface entièrement retravaillée avec cartes, hiérarchie visuelle, états et aperçu plus lisible ;
+- traitement local des images, du rognage et des PDF ;
+- connexion Internet détectée et disponible, mais jamais obligatoire pour scanner.
 
-Les images scannées et les PDF sont traités localement sur le téléphone. La permission INTERNET est présente et l'application affiche si Android considère la connexion comme réellement validée, mais aucune connexion réseau n'est nécessaire pour prendre une photo, importer, rogner, créer ou partager un PDF localement.
+## Détection automatique
 
-## Stack
+Pocket Scanner utilise un détecteur local léger fondé sur les gradients visuels de l'image. Il recherche quatre bords dominants et construit un cadrage rectangulaire approximatif.
 
-Android natif / Java 17, AndroidX, uCrop 2.2.11 pour le rognage, PdfDocument Android pour la création des PDF, et FileProvider + feuille de partage Android pour envoyer les PDF vers d'autres applications.
+Ce système est volontairement hors ligne et sans serveur. Sur une photo très inclinée, un fond complexe ou une feuille peu contrastée, l'application peut ne pas proposer de cadrage ; le rognage manuel uCrop reste alors disponible.
 
-## Ouvrir le projet
+La détection actuelle propose un rectangle de rognage et non une correction complète de perspective à quatre coins.
 
-1. Cloner ce dépôt.
-2. Ouvrir le dossier racine dans Android Studio.
-3. Utiliser JDK 17.
-4. Laisser Gradle télécharger les dépendances lors de la première synchronisation.
-5. Lancer l'application sur un téléphone Android ou un émulateur.
+## Stockage
 
-Le projet cible Android API 36 et utilise Android Gradle Plugin 8.10.1 avec Gradle 8.11.1.
+Les PDF sont enregistrés dans le dossier de documents privé de l'application, sous Documents/Scans. Ils sont listés dans la section Bibliothèque PDF de l'application et peuvent être partagés vers les applications Android compatibles.
 
-## Générer un APK
-
-Avec Gradle 8.11.1 installé, lancer : gradle :app:assembleDebug
-
-L'APK est créé dans : app/build/outputs/apk/debug/app-debug.apk
-
-Une GitHub Action dans .github/workflows/android.yml compile également l'APK debug à chaque push / pull request et le publie comme artefact du workflow.
+Les fichiers restent dans la bibliothèque lorsqu'une nouvelle session de scan est démarrée.
 
 ## Utilisation
 
-1. Appuyer sur Prendre une photo ou Importer une photo.
-2. Appuyer sur Rogner l'image pour ajuster les bords.
-3. Appuyer sur Ajouter comme page si le document comporte plusieurs pages.
-4. Répéter pour les autres pages.
-5. Appuyer sur Créer le PDF.
-6. Appuyer sur Partager le PDF et choisir l'application cible.
+1. Prenez une photo ou importez une image.
+2. Pocket Scanner analyse les bords localement.
+3. Acceptez le rognage proposé, rognez vous-même ou gardez l'original.
+4. Ajoutez d'autres pages si nécessaire.
+5. Appuyez sur Créer et enregistrer le PDF.
+6. Retrouvez le document dans la bibliothèque.
+7. Sélectionnez plusieurs PDF pour les partager ensemble si besoin.
+
+Pour un lot d'images, utilisez Importer plusieurs images d'un coup, sélectionnez les photos puis choisissez d'appliquer les cadrages automatiques ou de conserver les originaux.
+
+## Build
+
+- Android natif / Java 17
+- minSdk 23
+- targetSdk / compileSdk 36
+- Android Gradle Plugin 8.10.1
+- Gradle 8.11.1
+- uCrop 2.2.11
+
+GitHub Actions compile automatiquement un APK debug avec la commande gradle :app:assembleDebug --stacktrace.
+
+L'APK est publié comme artefact du workflow sous le nom pocket-scanner-debug.
 
 ## Publication Play Store
 
-Le dépôt contient une base fonctionnelle de l'application, mais une publication Play Store nécessite encore au minimum : icône définitive, captures d'écran, fiche Store, politique de confidentialité, signature de release / keystore et génération d'un Android App Bundle (.aab).
+Avant une publication Play Store, prévoir au minimum : icône définitive, screenshots, fiche Store, politique de confidentialité, signature de release / keystore, tests sur plusieurs appareils et génération d'un Android App Bundle signé.
