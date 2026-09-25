@@ -1,0 +1,109 @@
+Disque /dev/loop0 : 4 KiB, 4096 octets, 8 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop1 : 73,91 MiB, 77504512 octets, 151376 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop2 : 66,79 MiB, 70033408 octets, 136784 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop3 : 245,13 MiB, 257036288 octets, 502024 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop4 : 11,13 MiB, 11673600 octets, 22800 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop5 : 516,01 MiB, 541073408 octets, 1056784 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop6 : 614,53 MiB, 644382720 octets, 1258560 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop7 : 91,69 MiB, 96141312 octets, 187776 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/sda : 25 GiB, 26843545600 octets, 52428800 secteurs
+Modèle de disque : VBOX HARDDISK   
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+Type d'étiquette de disque : gpt
+Identifiant de disque : CBD5E424-7E28-460F-8AB3-50D6DA9CBDAC
+
+Périphérique Début      Fin Secteurs Taille Type
+/dev/sda1     2048     4095     2048     1M Amorçage BIOS
+/dev/sda2     4096 52426751 52422656    25G Système de fichiers Linux
+
+
+Disque /dev/sdb : 30 GiB, 32212254720 octets, 62914560 secteurs
+Modèle de disque : VBOX HARDDISK   
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/sdc : 8 GiB, 8589934592 octets, 16777216 secteurs
+Modèle de disque : VBOX HARDDISK   
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop8 : 401,98 MiB, 421507072 octets, 823256 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop9 : 50,27 MiB, 52711424 octets, 102952 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop10 : 11,81 MiB, 12382208 octets, 24184 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop11 : 49,29 MiB, 51687424 octets, 100952 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop12 : 576 KiB, 589824 octets, 1152 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+
+
+Disque /dev/loop13 : 828 KiB, 847872 octets, 1656 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
