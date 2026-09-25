@@ -2,112 +2,302 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:clipToPadding="false"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="28dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:background="@drawable/bg_hero"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            android:padding="22dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/subtitle"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="31sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/networkStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/network_unknown"
-            android:textSize="14sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/subtitle"
+                android:textColor="@color/hero_subtitle"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/pageCount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Pages prêtes : 0"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/preview"
-            android:layout_width="match_parent"
-            android:layout_height="360dp"
-            android:layout_marginTop="16dp"
-            android:adjustViewBounds="true"
-            android:background="#EEEEEE"
-            android:contentDescription="@string/preview_description"
-            android:scaleType="centerInside" />
+            <TextView
+                android:id="@+id/networkStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_chip_offline"
+                android:paddingStart="11dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="11dp"
+                android:paddingBottom="6dp"
+                android:text="@string/network_unknown"
+                android:textColor="@color/offline_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:background="@drawable/bg_card"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/current_scan"
+                android:textColor="@color/ink"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/scanStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/scan_status_ready"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@+id/scanProgress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+                android:indeterminate="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/pageCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_count_chip"
+                android:paddingStart="11dp"
+                android:paddingTop="7dp"
+                android:paddingEnd="11dp"
+                android:paddingBottom="7dp"
+                android:text="@string/page_count_zero"
+                android:textColor="@color/accent_dark"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_preview"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/preview_description"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/bg_preview_badge"
+                    android:paddingStart="9dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="9dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/local_processing"
+                    android:textColor="@color/ink"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/takePhotoButton"
+                    style="@style/Widget.PocketScanner.PrimaryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/take_photo" />
+
+                <Button
+                    android:id="@+id/importButton"
+                    style="@style/Widget.PocketScanner.SecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_weight="1"
+                    android:text="@string/import_photo" />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/takePhotoButton"
-                android:layout_width="0dp"
+                android:id="@+id/importMultipleButton"
+                style="@style/Widget.PocketScanner.SecondaryButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/take_photo" />
+                android:layout_marginTop="9dp"
+                android:text="@string/import_multiple" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cropButton"
+                    style="@style/Widget.PocketScanner.GhostButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/crop_photo" />
+
+                <Button
+                    android:id="@+id/addPageButton"
+                    style="@style/Widget.PocketScanner.GhostButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_weight="1"
+                    android:text="@string/add_page" />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/importButton"
-                android:layout_width="0dp"
+                android:id="@+id/createPdfButton"
+                style="@style/Widget.PocketScanner.PrimaryButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="@string/import_photo" />
+                android:layout_marginTop="15dp"
+                android:text="@string/create_pdf" />
+
+            <Button
+                android:id="@+id/sharePdfButton"
+                style="@style/Widget.PocketScanner.SecondaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:enabled="false"
+                android:text="@string/share_pdf" />
+
+            <Button
+                android:id="@+id/resetButton"
+                style="@style/Widget.PocketScanner.GhostButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="@string/reset_session" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/cropButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/crop_photo" />
-
-        <Button
-            android:id="@+id/addPageButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/add_page" />
-
-        <Button
-            android:id="@+id/createPdfButton"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/create_pdf" />
+            android:background="@drawable/bg_card"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="18dp">
 
-        <Button
-            android:id="@+id/sharePdfButton"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/library_title"
+                android:textColor="@color/ink"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/library_subtitle"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/shareSelectionButton"
+                    style="@style/Widget.PocketScanner.SecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/share_selection" />
+
+                <Button
+                    android:id="@+id/deleteSelectionButton"
+                    style="@style/Widget.PocketScanner.DangerButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/delete_selection" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/historyEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_empty_state"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/history_empty"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/historyContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:enabled="false"
-            android:text="@string/share_pdf" />
-
-        <Button
-            android:id="@+id/resetButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/reset_session" />
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/privacy_footer"
+            android:textColor="@color/muted"
+            android:textSize="12sp" />
 
     </LinearLayout>
 </ScrollView>
