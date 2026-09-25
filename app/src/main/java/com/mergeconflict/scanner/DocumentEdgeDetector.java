@@ -17,13 +17,21 @@ public final class DocumentEdgeDetector {
         public final float right;
         public final float bottom;
         public final int confidence;
+        public final float aspectRatio;
 
-        CropProposal(float left, float top, float right, float bottom, int confidence) {
+        CropProposal(
+                float left,
+                float top,
+                float right,
+                float bottom,
+                int confidence,
+                float aspectRatio) {
             this.left = left;
             this.top = top;
             this.right = right;
             this.bottom = bottom;
             this.confidence = confidence;
+            this.aspectRatio = aspectRatio;
         }
 
         public float widthFraction() {
@@ -36,9 +44,7 @@ public final class DocumentEdgeDetector {
 
         @NonNull
         public String formatLabel() {
-            float w = widthFraction();
-            float h = heightFraction();
-            float ratio = Math.max(w, h) / Math.max(0.001f, Math.min(w, h));
+            float ratio = aspectRatio;
             if (Math.abs(ratio - 1.4142f) <= 0.10f) {
                 return "format proche A4";
             }
@@ -138,12 +144,19 @@ public final class DocumentEdgeDetector {
         int confidence = (int) Math.round(55d + Math.min(41d, (weakest - 1d) * 38d));
         confidence = Math.max(55, Math.min(96, confidence));
 
+        float croppedWidthPx = (normalizedRight - normalizedLeft) * width;
+        float croppedHeightPx = (normalizedBottom - normalizedTop) * height;
+        float aspectRatio =
+                Math.max(croppedWidthPx, croppedHeightPx)
+                        / Math.max(1f, Math.min(croppedWidthPx, croppedHeightPx));
+
         return new CropProposal(
                 normalizedLeft,
                 normalizedTop,
                 normalizedRight,
                 normalizedBottom,
-                confidence);
+                confidence,
+                aspectRatio);
     }
 
     private static double[] smooth(double[] values, int radius) {
