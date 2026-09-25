@@ -346,7 +346,6 @@ public class MainActivity extends AppCompatActivity {
             options.setHideBottomControls(false);
             options.setToolbarTitle("Ajuster les bords");
             options.setToolbarColor(getColor(R.color.ink));
-            options.setStatusBarColor(getColor(R.color.ink));
             options.setActiveControlsWidgetColor(getColor(R.color.accent));
 
             Intent cropIntent = UCrop.of(source, destination)
