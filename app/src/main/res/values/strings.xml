@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Pocket Scanner</string>
+    <string name="subtitle">Scanner → Rogner → PDF → Partager</string>
+    <string name="network_unknown">Internet : vérification…</string>
+    <string name="network_online">Internet : disponible (facultatif)</string>
+    <string name="network_offline">Internet : hors ligne — le scanner fonctionne quand même</string>
+    <string name="page_count">Pages prêtes : %1$d</string>
+    <string name="take_photo">Prendre une photo</string>
+    <string name="import_photo">Importer une photo</string>
+    <string name="crop_photo">Rogner l’image</string>
+    <string name="add_page">Ajouter comme page</string>
+    <string name="create_pdf">Créer le PDF</string>
+    <string name="share_pdf">Partager le PDF</string>
+    <string name="reset_session">Nouvelle session</string>
+    <string name="preview_description">Aperçu du document</string>
+</resources>
