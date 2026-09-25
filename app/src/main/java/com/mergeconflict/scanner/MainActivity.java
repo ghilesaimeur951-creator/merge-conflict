@@ -368,14 +368,18 @@ public class MainActivity extends AppCompatActivity {
             int detected = 0;
 
             for (Uri uri : uris) {
+                Uri local = null;
                 try {
-                    Uri local = copyUriToCache(uri, "bulk_");
-                    originals.add(local);
+                    local = copyUriToCache(uri, "bulk_");
                     AutoCropResult result = detectAndCreateAutomaticCrop(local);
+                    originals.add(local);
                     proposals.add(result.output);
                     if (result.detected()) detected++;
                 } catch (Exception ignored) {
-                    // Skip unreadable images and continue with the rest.
+                    if (local != null) {
+                        originals.add(local);
+                        proposals.add(local);
+                    }
                 }
             }
 
